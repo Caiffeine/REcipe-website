@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// REcipe Web - Main App Component
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import NavBar from './components/nav-bar/nav-bar';
+import Footer from './components/footer/footer';
+import HomePage from './pages/home/home-page';
+import AboutPage from './pages/about/about-page';
+import DownloadPage from './pages/download/download-page';
+import ContactPage from './pages/contact/contact-page';
+import NotFound from './pages/not-found/not-found';
+import { useAOSInit } from './hooks/use-aos-init';
+import './styles/variables.css';
+import './styles/base.css';
+import './styles/components.css';
 
 function App() {
-  const [count, setCount] = useState(0)
+  // Initialize AOS animations
+  useAOSInit({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    offset: 100
+  });
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <Router>
+      <div className="app">
+        <NavBar />
+        <main className="main-content">
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/download" element={<DownloadPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;

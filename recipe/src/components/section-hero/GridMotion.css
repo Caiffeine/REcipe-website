@@ -1,0 +1,147 @@
+.noscroll {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.intro {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 250px;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.gridMotion-container {
+  gap: 1rem;
+  flex: none;
+  position: relative;
+  width: 150vw;
+  height: 150vh;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: 100%;
+  transform: rotate(-15deg);
+  transform-origin: center center;
+  z-index: 2;
+}
+
+.row {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(10, 1fr);
+  will-change: transform, filter;
+}
+
+.row__item {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  min-width: 0;
+}
+
+.row__item-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.row__item-img {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50% 50%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.row__item-content {
+  padding: 1rem;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .gridMotion-container {
+    width: 160vw;
+    height: 160vh;
+    gap: 0.8rem;
+  }
+  
+  .row {
+    gap: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .gridMotion-container {
+    width: 170vw;
+    height: 170vh;
+    gap: 0.6rem;
+  }
+  
+  .row {
+    gap: 0.6rem;
+  }
+  
+  .row__item-inner {
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridMotion-container {
+    width: 180vw;
+    height: 180vh;
+    gap: 0.5rem;
+  }
+  
+  .row {
+    gap: 0.5rem;
+  }
+  
+  .row__item-inner {
+    border-radius: 6px;
+  }
+}
+
+.fullview {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.fullview .row__item-inner {
+  border-radius: 0px;
+}
