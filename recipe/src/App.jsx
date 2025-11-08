@@ -2,6 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import NavBar from './components/nav-bar/nav-bar';
 import Footer from './components/footer/footer';
+import ScrollToTop from './components/scroll-to-top/ScrollToTop';
 import HomePage from './pages/home/home-page';
 import AboutPage from './pages/about/about-page';
 import DownloadPage from './pages/download/download-page';
@@ -23,6 +24,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="app">
         <NavBar />
         <main className="main-content">

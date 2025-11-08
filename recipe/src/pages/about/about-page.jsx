@@ -1,8 +1,74 @@
 // REcipe Web - About Page
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Leaf, Users, Target, Award } from 'lucide-react';
 import './about-page.css';
 
 const AboutPage = () => {
+    const [revealedCards, setRevealedCards] = useState({});
+    const [mousePosition, setMousePosition] = useState({});
+
+    // Helper function to get initials from name
+    const getInitials = (name) => {
+        return name
+            .split(' ')
+            .map(word => word[0])
+            .join('')
+            .toUpperCase();
+    };
+
+    const developers = [
+        {
+            name: 'Cairos Magno',
+            role: 'Frontend Developer',
+            description: 'Crafting pixel-perfect interfaces and delightful user experiences.',
+            photo: '/card-photos/cai.png',
+        },
+        {
+            name: 'Curt Reyes',
+            role: 'Quality Assurance Officer',
+            description: 'Ensuring quality through rigorous testing and bug hunting.',
+            photo: '/card-photos/curt.png',
+        },
+        {
+            name: 'Russ Garcia',
+            role: 'Backend Developer',
+            description: 'Building robust backends and optimizing database performance.',
+            photo: '/card-photos/russ.png',
+        },
+        {
+            name: 'Troy Gonzales',
+            role: 'Project Manager',
+            description: 'Orchestrating sprints and keeping the team on track.',
+            photo: '/card-photos/troy.png',
+        },
+    ];
+
+    const handleCardReveal = (index) => {
+        if (!revealedCards[index]) {
+            setRevealedCards(prev => ({ ...prev, [index]: true }));
+        }
+    };
+
+    const handleMouseMove = (e, index) => {
+        const card = e.currentTarget;
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        setMousePosition(prev => ({
+            ...prev,
+            [index]: { x, y }
+        }));
+    };
+
+    const handleMouseLeave = (index) => {
+        setMousePosition(prev => ({
+            ...prev,
+            [index]: null
+        }));
+    };
+
     return (
         <div className="about-page">
             {/* Hero Section */}
@@ -96,29 +162,200 @@ const AboutPage = () => {
             </section>
 
             {/* Developers Section */}
-            <section className="section about-developers">
+            <section className="section about-developers team-section">
                 <div className="container">
-                    <div className="about-developers__content" data-aos="fade-up">
-                        <h2 className="about-developers__title">Meet the Developers</h2>
-                        <p className="about-developers__subtitle">The team behind REcipe</p>
-                        <div className="developers-grid">
-                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="0">
-                                <div className="developer-card__name">Cairos Magno</div>
-                                <div className="developer-card__role">Developer</div>
-                            </div>
-                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="100">
-                                <div className="developer-card__name">Curt Reyes</div>
-                                <div className="developer-card__role">Developer</div>
-                            </div>
-                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="200">
-                                <div className="developer-card__name">Russ Garcia</div>
-                                <div className="developer-card__role">Developer</div>
-                            </div>
-                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="300">
-                                <div className="developer-card__name">Troy Gonzales</div>
-                                <div className="developer-card__role">Developer</div>
-                            </div>
-                        </div>
+                    <motion.h2
+                        className="about-developers__title section-title"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.5 }}
+                        transition={{ duration: 0.4 }}
+                    >
+                        Meet the Developers
+                    </motion.h2>
+
+                    <div className="developers-grid team-grid">
+                        {developers.map((member, index) => {
+                            const isRevealed = revealedCards[index];
+
+                            return (
+                                <motion.div
+                                    key={index}
+                                    className={`team-card-wrapper ${isRevealed ? 'revealed' : ''}`}
+                                    initial={{ opacity: 0, scale: 0.9 }}
+                                    whileInView={{ opacity: 1, scale: 1 }}
+                                    viewport={{ once: true, amount: 0.3 }}
+                                    transition={{ duration: 0.4, delay: index * 0.05 }}
+                                    onClick={() => handleCardReveal(index)}
+                                    onMouseMove={(e) => !isRevealed && handleMouseMove(e, index)}
+                                    onMouseLeave={() => handleMouseLeave(index)}
+                                    style={{ cursor: !isRevealed ? 'pointer' : 'default' }}
+                                >
+                                    {/* Card Front (Hidden) */}
+                                    <AnimatePresence>
+                                        {!isRevealed && (
+                                            <motion.div
+                                                className="team-card-front"
+                                                initial={{ opacity: 1 }}
+                                                exit={{
+                                                    opacity: 0,
+                                                    filter: "blur(20px)",
+                                                    scale: 1.2
+                                                }}
+                                                transition={{
+                                                    duration: 0.8,
+                                                    ease: "easeOut"
+                                                }}
+                                            >
+                                                {/* Shine effect covering entire card */}
+                                                <div
+                                                    className="card-shine"
+                                                    style={mousePosition[index] ? {
+                                                        background: `radial-gradient(circle 400px at ${mousePosition[index].x}px ${mousePosition[index].y}px, rgba(76, 175, 80, 0.6) 0%, rgba(76, 175, 80, 0.4) 25%, rgba(76, 175, 80, 0.2) 50%, transparent 100%)`
+                                                    } : {}}
+                                                ></div>
+
+                                                <div className="card-front-content">
+                                                    <div className="initials-circle">{getInitials(member.name)}</div>
+                                                    <p className="mystery-text">Click to Reveal</p>
+                                                </div>
+
+                                                {/* Glass shatter overlay */}
+                                                {isRevealed === false && (
+                                                    <div className="glass-overlay"></div>
+                                                )}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+
+                                    {/* Card Back (Revealed) */}
+                                    <AnimatePresence>
+                                        {isRevealed && (
+                                            <motion.div
+                                                className="team-card revealed-card"
+                                                initial={{
+                                                    opacity: 0,
+                                                    scale: 0.8,
+                                                    filter: "blur(20px)"
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    scale: 1,
+                                                    filter: "blur(0px)"
+                                                }}
+                                                transition={{
+                                                    duration: 0.6,
+                                                    ease: "easeOut",
+                                                    delay: 0.3
+                                                }}
+                                                whileHover="hover"
+                                                variants={{
+                                                    hover: { y: -8 }
+                                                }}
+                                            >
+                                                {/* Floating placeholder that slides up behind card on hover */}
+                                                <motion.div
+                                                    className="floating-avatar"
+                                                    variants={{
+                                                        hover: {
+                                                            y: -180,
+                                                            scale: 1.1,
+                                                            opacity: 1
+                                                        }
+                                                    }}
+                                                    transition={{
+                                                        type: "spring",
+                                                        stiffness: 150,
+                                                        damping: 25
+                                                    }}
+                                                >
+                                                    {member.photo ? (
+                                                        <img
+                                                            src={member.photo}
+                                                            alt={member.name}
+                                                            style={{
+                                                                width: '100%',
+                                                                height: '100%',
+                                                                objectFit: 'cover',
+                                                                borderRadius: '16px'
+                                                            }}
+                                                        />
+                                                    ) : (
+                                                        <img
+                                                            src="/card-photos/cai.png"
+                                                            alt={`${member.name} placeholder`}
+                                                            style={{
+                                                                width: '100%',
+                                                                height: '100%',
+                                                                objectFit: 'cover',
+                                                                borderRadius: '16px'
+                                                            }}
+                                                        />
+                                                    )}
+                                                </motion.div>
+                                                <motion.div
+                                                    className="team-avatar in-card"
+                                                    initial={{ scale: 0, opacity: 0 }}
+                                                    animate={{ scale: 1, opacity: 1 }}
+                                                    transition={{ delay: 0.6, type: "spring", stiffness: 200, damping: 15 }}
+                                                >
+                                                    {member.name.split(' ').map(n => n[0]).join('')}
+                                                </motion.div>
+                                                <motion.h3
+                                                    className="team-name"
+                                                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                                    transition={{ delay: 0.7, duration: 0.4 }}
+                                                >
+                                                    {member.name}
+                                                </motion.h3>
+                                                <motion.div
+                                                    className="team-description"
+                                                    initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
+                                                    animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                                                    transition={{ delay: 0.8, duration: 0.4 }}
+                                                >
+                                                    <span className="team-role-inline">{member.role}</span>
+                                                    <p className="team-description-text">{member.description}</p>
+                                                </motion.div>
+
+                                                {/* Particle effects */}
+                                                <motion.div
+                                                    className="reveal-particles"
+                                                    initial={{ opacity: 1 }}
+                                                    animate={{ opacity: 0 }}
+                                                    transition={{ delay: 1, duration: 0.5 }}
+                                                >
+                                                    {[...Array(12)].map((_, i) => (
+                                                        <motion.div
+                                                            key={i}
+                                                            className="particle"
+                                                            initial={{
+                                                                x: 0,
+                                                                y: 0,
+                                                                opacity: 1,
+                                                                scale: 1
+                                                            }}
+                                                            animate={{
+                                                                x: Math.cos(i * 30 * Math.PI / 180) * 100,
+                                                                y: Math.sin(i * 30 * Math.PI / 180) * 100,
+                                                                opacity: 0,
+                                                                scale: 0
+                                                            }}
+                                                            transition={{
+                                                                delay: 0.3 + (i * 0.05),
+                                                                duration: 0.8,
+                                                                ease: "easeOut"
+                                                            }}
+                                                        />
+                                                    ))}
+                                                </motion.div>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </motion.div>
+                            );
+                        })}
                     </div>
                 </div>
             </section>

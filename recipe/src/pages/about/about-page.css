@@ -123,9 +123,10 @@
   line-height: 1.6;
 }
 
-/* Developers Section */
+/* Developers Section - VALORANT Style */
 .about-developers {
   padding: var(--spacing-3xl) 0;
+  padding-top: 5rem !important;
 }
 
 .about-developers__content {
@@ -135,8 +136,9 @@
 .about-developers__title {
   font-size: var(--font-size-5xl);
   color: var(--color-primary);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: 6rem;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .about-developers__subtitle {
@@ -147,12 +149,309 @@
 
 .developers-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: var(--spacing-xl);
   margin-top: var(--spacing-2xl);
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* Card Wrapper */
+.team-card-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  perspective: 1000px;
+  overflow: visible;
+}
+
+/* Card Front (Hidden State) */
+.team-card-front {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(26, 26, 26, 0.95) 0%, 
+    rgba(42, 42, 42, 0.95) 100%
+  );
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--color-primary);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 
+    0 0 20px rgba(76, 175, 80, 0.3),
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    inset 0 0 60px rgba(76, 175, 80, 0.1);
+  transition: all 0.3s ease;
+  z-index: 100;
+}
+
+.team-card-front:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 0 30px rgba(76, 175, 80, 0.5),
+    0 12px 48px rgba(0, 0, 0, 0.5),
+    inset 0 0 80px rgba(76, 175, 80, 0.15);
+  border-color: var(--color-secondary);
+}
+
+/* Glass overlay effect */
+.glass-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.card-front-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+}
+
+.initials-circle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.2);
+  border: 3px solid var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--color-white);
+  text-shadow: 
+    0 0 10px rgba(76, 175, 80, 1),
+    0 0 20px rgba(76, 175, 80, 0.8),
+    0 0 30px rgba(76, 175, 80, 0.6);
+  margin-bottom: 1rem;
+  animation: pulse 2s ease-in-out infinite;
+  box-shadow: 
+    0 0 20px rgba(76, 175, 80, 0.4),
+    0 0 40px rgba(76, 175, 80, 0.2),
+    inset 0 0 20px rgba(76, 175, 80, 0.1);
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+}
+
+.mystery-text {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.team-card-front:hover .mystery-text {
+  opacity: 1;
+}
+
+/* Mouse-following shine effect */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+  border-radius: 16px;
+}
+
+.team-card-front:hover .card-shine {
+  opacity: 1;
+}
+
+/* Card Back (Revealed State) */
+.team-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border: 2px solid var(--color-primary);
+  border-radius: 16px;
+  padding: 0;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  transition: transform 0.1s ease, box-shadow 0.2s ease;
+  box-shadow: 
+    0 0 20px rgba(76, 175, 80, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.team-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 0 30px rgba(76, 175, 80, 0.3),
+    0 12px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Reveal particles effect */
+.reveal-particles {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px rgba(76, 175, 80, 0.8),
+    0 0 20px rgba(76, 175, 80, 0.5);
+}
+
+.team-avatar {
+  display: none;
+}
+
+/* Floating avatar that appears behind the card on hover */
+.floating-avatar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 180px;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: filter 0.4s ease 0.3s;
+}
+
+.floating-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+  filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+  position: relative;
+}
+
+/* Green glow effect when fully visible */
+.revealed-card:hover .floating-avatar {
+  filter: drop-shadow(0 0 20px rgba(76, 175, 80, 0.4)) 
+         drop-shadow(0 0 40px rgba(76, 175, 80, 0.2))
+         drop-shadow(0 10px 30px rgba(0, 0, 0, 0.3));
+}
+
+/* Revealed card styling */
+.revealed-card {
+  position: relative;
+  overflow: visible !important;
+}
+
+.revealed-card:hover {
+  overflow: visible !important;
+}
+
+.team-name {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-white);
+  background: var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  display: block;
+  width: 90%;
+  max-width: 200px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(76, 175, 80, 0.3);
+  margin-top: calc(50% - 2rem);
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 0;
+  flex-shrink: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.team-role {
+  display: none;
+}
+
+.team-description {
+  padding: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  box-sizing: border-box;
+  gap: 0.5rem;
+}
+
+.team-role-inline {
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  text-align: center;
+  margin: 0;
+}
+
+.team-description-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(13, 13, 13, 0.7);
+  text-align: center;
+  margin: 0;
 }
 
 .developer-card {
@@ -182,6 +481,13 @@
 }
 
 /* Responsive Styles */
+@media (max-width: 1024px) {
+  .developers-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-xl);
+  }
+}
+
 @media (max-width: 768px) {
   .about-hero__title {
     font-size: var(--font-size-4xl);
@@ -202,5 +508,27 @@
 
   .developers-grid {
     grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    justify-items: center;
+  }
+
+  .team-card-wrapper {
+    width: 100%;
+    max-width: 280px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .developers-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-xl);
+    justify-items: center;
+  }
+
+  .team-card-wrapper {
+    width: 100%;
+    max-width: 280px;
+    height: 320px;
   }
 }
