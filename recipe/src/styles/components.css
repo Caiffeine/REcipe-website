@@ -92,6 +92,7 @@
   font-size: var(--font-size-5xl);
   color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .section-subtitle {

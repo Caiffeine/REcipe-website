@@ -21,6 +21,7 @@
   font-size: var(--font-size-6xl);
   color: var(--color-white);
   margin-bottom: var(--spacing-md);
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .contact-hero__subtitle {
@@ -46,6 +47,7 @@
   font-size: var(--font-size-3xl);
   color: var(--color-text-dark);
   margin-bottom: var(--spacing-md);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .contact-info__description {
@@ -127,6 +129,7 @@
   font-size: var(--font-size-2xl);
   color: var(--color-text-dark);
   margin-bottom: var(--spacing-xl);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .form-group {

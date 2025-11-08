@@ -141,6 +141,7 @@
   font-size: var(--font-size-xl);
   margin-bottom: var(--spacing-sm);
   color: var(--color-text-dark);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .feature-card__description {
@@ -192,6 +193,7 @@
   font-size: var(--font-size-2xl);
   margin-bottom: var(--spacing-sm);
   color: var(--color-text-dark);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 .step__description {
@@ -216,6 +218,7 @@
   font-size: var(--font-size-4xl);
   margin-bottom: var(--spacing-md);
   color: var(--color-text-dark);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .cta__description {

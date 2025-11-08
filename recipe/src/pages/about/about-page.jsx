@@ -95,23 +95,28 @@ const AboutPage = () => {
                 </div>
             </section>
 
-            {/* Impact Section */}
-            <section className="section about-impact">
+            {/* Developers Section */}
+            <section className="section about-developers">
                 <div className="container">
-                    <div className="about-impact__content" data-aos="fade-up">
-                        <h2 className="about-impact__title">Making an Impact</h2>
-                        <div className="impact-stats">
-                            <div className="impact-stat" data-aos="zoom-in" data-aos-delay="0">
-                                <div className="impact-stat__number">1,000+</div>
-                                <div className="impact-stat__label">Active Users</div>
+                    <div className="about-developers__content" data-aos="fade-up">
+                        <h2 className="about-developers__title">Meet the Developers</h2>
+                        <p className="about-developers__subtitle">The team behind REcipe</p>
+                        <div className="developers-grid">
+                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="0">
+                                <div className="developer-card__name">Cairos Magno</div>
+                                <div className="developer-card__role">Developer</div>
                             </div>
-                            <div className="impact-stat" data-aos="zoom-in" data-aos-delay="100">
-                                <div className="impact-stat__number">5,000+</div>
-                                <div className="impact-stat__label">Items Tracked</div>
+                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="100">
+                                <div className="developer-card__name">Curt Reyes</div>
+                                <div className="developer-card__role">Developer</div>
                             </div>
-                            <div className="impact-stat" data-aos="zoom-in" data-aos-delay="200">
-                                <div className="impact-stat__number">30%</div>
-                                <div className="impact-stat__label">Waste Reduction</div>
+                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="200">
+                                <div className="developer-card__name">Russ Garcia</div>
+                                <div className="developer-card__role">Developer</div>
+                            </div>
+                            <div className="developer-card" data-aos="zoom-in" data-aos-delay="300">
+                                <div className="developer-card__name">Troy Gonzales</div>
+                                <div className="developer-card__role">Developer</div>
                             </div>
                         </div>
                     </div>
