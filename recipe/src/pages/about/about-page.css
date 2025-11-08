@@ -517,6 +517,15 @@
     max-width: 280px;
     height: 320px;
   }
+
+  /* Auto-show floating avatar on mobile */
+  .revealed-card .floating-avatar {
+    y: -180px;
+    scale: 1.1;
+    opacity: 1;
+    transform: translateY(-180px) scale(1.1);
+    transition-delay: 0.5s;
+  }
 }
 
 @media (max-width: 480px) {
@@ -530,5 +539,14 @@
     width: 100%;
     max-width: 280px;
     height: 320px;
+  }
+
+  /* Auto-show floating avatar on mobile with delay */
+  .revealed-card .floating-avatar {
+    y: -180px;
+    scale: 1.1;
+    opacity: 1;
+    transform: translateY(-180px) scale(1.1);
+    transition-delay: 0.5s;
   }
 }
