@@ -90,7 +90,7 @@
 
 .section-title {
   font-size: var(--font-size-5xl);
-  color: var(--color-text-dark);
+  color: var(--color-primary);
   margin-bottom: var(--spacing-sm);
 }
 
