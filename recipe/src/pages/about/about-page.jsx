@@ -19,28 +19,28 @@ const AboutPage = () => {
 
     const developers = [
         {
+            name: 'Troy Gonzales',
+            role: 'Project Manager',
+            description: 'Coordinating the recipe platform\'s development and feature delivery.',
+            photo: '/card-photos/troy.png',
+        },
+        {
+            name: 'Russ Garcia',
+            role: 'Backend Developer',
+            description: 'Building the recipe database and search functionality infrastructure.',
+            photo: '/card-photos/russ.png',
+        },
+        {
             name: 'Cairos Magno',
             role: 'Frontend Developer',
-            description: 'Crafting pixel-perfect interfaces and delightful user experiences.',
+            description: 'Creating an appetizing interface for seamless recipe browsing.',
             photo: '/card-photos/cai.png',
         },
         {
             name: 'Curt Reyes',
             role: 'Quality Assurance Officer',
-            description: 'Ensuring quality through rigorous testing and bug hunting.',
+            description: 'Testing every ingredient to ensure a flawless user experience.',
             photo: '/card-photos/curt.png',
-        },
-        {
-            name: 'Russ Garcia',
-            role: 'Backend Developer',
-            description: 'Building robust backends and optimizing database performance.',
-            photo: '/card-photos/russ.png',
-        },
-        {
-            name: 'Troy Gonzales',
-            role: 'Project Manager',
-            description: 'Orchestrating sprints and keeping the team on track.',
-            photo: '/card-photos/troy.png',
         },
     ];
 
