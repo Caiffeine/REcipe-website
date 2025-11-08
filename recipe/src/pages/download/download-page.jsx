@@ -26,7 +26,7 @@ const DownloadPage = () => {
                                 <span className="download-hero__title--highlight">Start Saving Food Today</span>
                             </h1>
                             <p className="download-hero__description">
-                                Get the REcipe app exclusively from our website. Available for Android and iOS devices.
+                                Get the REcipe app exclusively from our website. Available for Android devices.
                             </p>
 
                             <div className="download-buttons">
@@ -38,19 +38,11 @@ const DownloadPage = () => {
                                 >
                                     Download for Android
                                 </Button>
-                                <Button
-                                    variant="secondary"
-                                    size="large"
-                                    icon={<Download size={24} />}
-                                    className="download-btn"
-                                >
-                                    Download for iOS
-                                </Button>
                             </div>
 
                             <p className="download-note">
                                 <Smartphone size={18} />
-                                Compatible with Android 8.0+ and iOS 13.0+
+                                Compatible with Android 8.0+
                             </p>
                         </div>
 
@@ -161,6 +153,59 @@ const DownloadPage = () => {
                                 REcipe requires camera access for food scanning and notification permissions
                                 for expiry alerts. All permissions are optional but recommended for the best experience.
                             </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Version History Section */}
+            <section className="section section-alt download-version-history">
+                <div className="container">
+                    <div className="section-header" data-aos="fade-up">
+                        <h2 className="section-title">Version History</h2>
+                        <p className="section-subtitle">
+                            Track the latest updates and improvements to REcipe
+                        </p>
+                    </div>
+
+                    <div className="version-list">
+                        <div className="version-item" data-aos="fade-up">
+                            <div className="version-item__header">
+                                <span className="version-item__number">Version 1.2.0</span>
+                                <span className="version-item__date">November 2025</span>
+                            </div>
+                            <ul className="version-item__changes">
+                                <li>Improved AI food recognition accuracy by 25%</li>
+                                <li>Added dark mode support</li>
+                                <li>Enhanced recipe suggestion algorithm</li>
+                                <li>Fixed minor bugs and improved performance</li>
+                            </ul>
+                        </div>
+
+                        <div className="version-item" data-aos="fade-up" data-aos-delay="100">
+                            <div className="version-item__header">
+                                <span className="version-item__number">Version 1.1.0</span>
+                                <span className="version-item__date">October 2025</span>
+                            </div>
+                            <ul className="version-item__changes">
+                                <li>Added nutritional information display</li>
+                                <li>Improved notification system</li>
+                                <li>New inventory management features</li>
+                                <li>Bug fixes and stability improvements</li>
+                            </ul>
+                        </div>
+
+                        <div className="version-item" data-aos="fade-up" data-aos-delay="200">
+                            <div className="version-item__header">
+                                <span className="version-item__number">Version 1.0.0</span>
+                                <span className="version-item__date">September 2025</span>
+                            </div>
+                            <ul className="version-item__changes">
+                                <li>Initial release</li>
+                                <li>AI-powered food recognition</li>
+                                <li>Smart expiry tracking</li>
+                                <li>Personalized recipe suggestions</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
