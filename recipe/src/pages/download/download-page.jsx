@@ -99,8 +99,8 @@ const DownloadPage = () => {
 
                         <div className="download-hero__image" data-aos="fade-left" data-aos-delay="200">
                             <img
-                                src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=800&fit=crop"
-                                alt="REcipe mobile app interface"
+                                src="/path/to/REcipe.gif"
+                                alt="REcipe logo animation"
                             />
                         </div>
                     </div>
