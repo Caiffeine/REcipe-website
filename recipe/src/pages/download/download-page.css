@@ -591,7 +591,7 @@
 /* Stats Section */
 .download-stats {
   padding: var(--spacing-3xl) 0;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  background: var(--color-background-alt);
   position: relative;
   overflow: hidden;
 }
@@ -603,7 +603,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
   animation: moveBackground 20s linear infinite;
 }
@@ -628,30 +628,31 @@
 .stat-item {
   text-align: center;
   padding: var(--spacing-xl);
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--color-white);
   backdrop-filter: blur(10px);
   border-radius: var(--radius-lg);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(74, 222, 128, 0.2);
   transition: all 0.3s ease;
 }
 
 .stat-item:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: var(--color-white);
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 40px rgba(74, 222, 128, 0.2);
+  border-color: var(--color-primary);
 }
 
 .stat-item__number {
   font-size: var(--font-size-5xl);
   font-weight: var(--font-weight-bold);
-  color: var(--color-white);
+  color: var(--color-primary);
   margin-bottom: var(--spacing-xs);
-  text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-shadow: none;
 }
 
 .stat-item__label {
   font-size: var(--font-size-base);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-text-dark);
   text-transform: uppercase;
   letter-spacing: 1px;
 }

@@ -85,8 +85,8 @@ const DownloadPage = () => {
             <section className="section download-stats">
                 <div className="container">
                     <div className="section-header" data-aos="fade-up">
-                        <h2 className="section-title" style={{ color: 'white' }}>Trusted by Thousands</h2>
-                        <p className="section-subtitle" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                        <h2 className="section-title" style={{ color: 'var(--color-primary)' }}>Trusted by Thousands</h2>
+                        <p className="section-subtitle" style={{ color: 'var(--color-text-dark)' }}>
                             Join our growing community of food waste warriors
                         </p>
                     </div>
@@ -98,7 +98,7 @@ const DownloadPage = () => {
                                 data-aos="zoom-in"
                                 data-aos-delay={index * 100}
                             >
-                                <div className="stat-item__icon" style={{ marginBottom: 'var(--spacing-sm)', display: 'flex', justifyContent: 'center', color: 'white' }}>
+                                <div className="stat-item__icon" style={{ marginBottom: 'var(--spacing-sm)', display: 'flex', justifyContent: 'center', color: 'var(--color-primary)' }}>
                                     {stat.icon}
                                 </div>
                                 <div className="stat-item__number">{stat.number}</div>
