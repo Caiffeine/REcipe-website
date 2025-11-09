@@ -99,7 +99,7 @@ const DownloadPage = () => {
 
                         <div className="download-hero__image" data-aos="fade-left" data-aos-delay="200">
                             <img
-                                src="/path/to/REcipe.gif"
+                                src="/images/REcipe.gif"
                                 alt="REcipe logo animation"
                             />
                         </div>
