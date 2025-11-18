@@ -9,6 +9,7 @@ import HomePage from './pages/home/home-page';
 import AboutPage from './pages/about/about-page';
 import DownloadPage from './pages/download/download-page';
 import ContactPage from './pages/contact/contact-page';
+import ResetPassword from './pages/reset-password/reset-password';
 import NotFound from './pages/not-found/not-found';
 import { useAOSInit } from './hooks/use-aos-init';
 import './styles/variables.css';
@@ -37,17 +38,27 @@ function App() {
         easing="ease-out"
       >
         <div className="app">
-          <NavBar />
-          <main className="main-content">
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/about" element={<AboutPage />} />
-              <Route path="/download" element={<DownloadPage />} />
-              <Route path="/contact" element={<ContactPage />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
+          <Routes>
+            {/* Reset password page - no nav/footer for clean experience */}
+            <Route path="/reset-password" element={<ResetPassword />} />
+            
+            {/* Regular pages with nav and footer */}
+            <Route path="/*" element={
+              <>
+                <NavBar />
+                <main className="main-content">
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/download" element={<DownloadPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </>
+            } />
+          </Routes>
         </div>
       </ClickSpark>
     </Router>
