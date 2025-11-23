@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { Eye, EyeOff, AlertTriangle, CheckCircle, Check, Circle } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
 import './reset-password.css';
 
@@ -14,7 +15,7 @@ const ResetPassword = () => {
   const [tokenValid, setTokenValid] = useState(false);
   const [checkingToken, setCheckingToken] = useState(true);
   const [countdown, setCountdown] = useState(30);
-  
+
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -23,7 +24,7 @@ const ResetPassword = () => {
     const checkSession = async () => {
       try {
         const { data: { session }, error } = await supabase.auth.getSession();
-        
+
         if (error || !session) {
           setError('Invalid or expired reset link. Please request a new password reset.');
           setTokenValid(false);
@@ -100,7 +101,7 @@ const ResetPassword = () => {
       setSuccess(true);
       setPassword('');
       setConfirmPassword('');
-      
+
     } catch (err) {
       console.error('Password reset error:', err);
       setError(err.message || 'Failed to reset password. Please try again.');
@@ -124,10 +125,10 @@ const ResetPassword = () => {
     return (
       <div className="reset-password-container">
         <div className="reset-password-card error-card">
-          <div className="error-icon">⚠️</div>
+          <AlertTriangle className="error-icon" size={64} />
           <h2>Invalid Reset Link</h2>
           <p>{error}</p>
-          <button 
+          <button
             className="home-button"
             onClick={() => navigate('/')}
           >
@@ -142,7 +143,9 @@ const ResetPassword = () => {
     return (
       <div className="reset-password-container">
         <div className="reset-password-card success-card">
-          <div className="success-icon">✓</div>
+          <div className="success-icon-wrapper">
+            <CheckCircle className="success-icon" size={48} />
+          </div>
           <h2>Password Reset Successfully!</h2>
           <p>Your password has been changed successfully.</p>
           <p className="success-subtitle">
@@ -151,7 +154,7 @@ const ResetPassword = () => {
           <p className="countdown-text">
             Redirecting to home in {countdown} seconds...
           </p>
-          <button 
+          <button
             className="home-button"
             onClick={() => navigate('/')}
           >
@@ -188,6 +191,7 @@ const ResetPassword = () => {
                 placeholder="Enter new password"
                 required
                 disabled={loading}
+                autoComplete="new-password"
               />
               <button
                 type="button"
@@ -195,7 +199,7 @@ const ResetPassword = () => {
                 onClick={() => setShowPassword(!showPassword)}
                 disabled={loading}
               >
-                {showPassword ? '👁️' : '👁️‍🗨️'}
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
           </div>
@@ -211,6 +215,7 @@ const ResetPassword = () => {
                 placeholder="Confirm new password"
                 required
                 disabled={loading}
+                autoComplete="new-password"
               />
               <button
                 type="button"
@@ -218,7 +223,7 @@ const ResetPassword = () => {
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                 disabled={loading}
               >
-                {showConfirmPassword ? '👁️' : '👁️‍🗨️'}
+                {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
               </button>
             </div>
           </div>
@@ -227,16 +232,20 @@ const ResetPassword = () => {
             <p className="requirements-title">Password must contain:</p>
             <ul>
               <li className={password.length >= 8 ? 'valid' : ''}>
-                At least 8 characters
+                {password.length >= 8 ? <Check size={16} /> : <Circle size={16} />}
+                <span>At least 8 characters</span>
               </li>
               <li className={/[A-Z]/.test(password) ? 'valid' : ''}>
-                One uppercase letter
+                {/[A-Z]/.test(password) ? <Check size={16} /> : <Circle size={16} />}
+                <span>One uppercase letter</span>
               </li>
               <li className={/[a-z]/.test(password) ? 'valid' : ''}>
-                One lowercase letter
+                {/[a-z]/.test(password) ? <Check size={16} /> : <Circle size={16} />}
+                <span>One lowercase letter</span>
               </li>
               <li className={/[0-9]/.test(password) ? 'valid' : ''}>
-                One number
+                {/[0-9]/.test(password) ? <Check size={16} /> : <Circle size={16} />}
+                <span>One number</span>
               </li>
             </ul>
           </div>
