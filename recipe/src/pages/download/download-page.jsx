@@ -43,6 +43,17 @@ const DownloadPage = () => {
                             <p className="download-hero__subtitle">
                                 Compatible with Android 8.0+ • Free Forever
                             </p>
+                            <div className="download-hero__actions">
+                                <Button
+                                    href="https://expo.dev/artifacts/eas/4ka1fuuS5cNfDxGmNzuMse.apk"
+                                    variant="primary"
+                                    size="large"
+                                    icon={<Download size={18} />}
+                                    download
+                                >
+                                    Download APK
+                                </Button>
+                            </div>
                         </div>
 
                         <div className="download-hero__image" data-aos="fade-left" data-aos-delay="200">
