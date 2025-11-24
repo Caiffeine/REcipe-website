@@ -18,14 +18,14 @@ const DownloadPage = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-const features = [
-    'AI-Powered Food Recognition',
-    'Universal Scanner (Barcode, QR, OCR)',
-    'SousChef AI Recipe Generator',
-    'Smart Expiry Alerts (7/3/1 Days)',
-    'User Pantry Management',
-    'Cross-Device Sync via Supabase'
-];
+    const features = [
+        'AI-Powered Food Recognition',
+        'Universal Scanner (Barcode, QR, OCR)',
+        'SousChef AI Recipe Generator',
+        'Smart Expiry Alerts (7/3/1 Days)',
+        'User Pantry Management',
+        'Cross-Device Sync via Supabase'
+    ];
 
     return (
         <div className="download-page">
@@ -77,31 +77,32 @@ const features = [
                     </div>
                 </div>
             </section>
-{/* Developer Insights Section */}
-<section className="section section-alt developer-insights">
-    <div className="container">
-        <div className="section-header" data-aos="fade-up">
-            <h2 className="section-title">Powered by Modern Tech</h2>
-            <p className="section-subtitle">
-                Built for performance, reliability, and scale.
-            </p>
-        </div>
-        <div className="features-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--spacing-xl)', marginTop: 'var(--spacing-2xl)' }}>
-            <div className="feature-item" data-aos="fade-up">
-                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>React Native</h3>
-                <p>Native Android performance.</p>
-            </div>
-            <div className="feature-item" data-aos="fade-up" data-aos-delay="100">
-                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>Supabase</h3>
-                <p>Real-time database & secure auth.</p>
-            </div>
-            <div className="feature-item" data-aos="fade-up" data-aos-delay="200">
-                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>Edamam & SousChef AI</h3>
-                <p>Enterprise-grade recipe intelligence.</p>
-            </div>
-        </div>
-    </div>
-</section>
+
+            {/* Developer Insights Section */}
+            <section className="section section-alt developer-insights">
+                <div className="container">
+                    <div className="section-header" data-aos="fade-up">
+                        <h2 className="section-title">Powered by Modern Tech</h2>
+                        <p className="section-subtitle">
+                            Built for performance, reliability, and scale.
+                        </p>
+                    </div>
+                    <div className="features-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--spacing-xl)', marginTop: 'var(--spacing-2xl)' }}>
+                        <div className="feature-item" data-aos="fade-up">
+                            <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>React Native</h3>
+                            <p>Native Android performance.</p>
+                        </div>
+                        <div className="feature-item" data-aos="fade-up" data-aos-delay="100">
+                            <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>Supabase</h3>
+                            <p>Real-time database & secure auth.</p>
+                        </div>
+                        <div className="feature-item" data-aos="fade-up" data-aos-delay="200">
+                            <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>Edamam & SousChef AI</h3>
+                            <p>Enterprise-grade recipe intelligence.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Instructions Section */}
             <section className="section section-alt download-instructions">
@@ -266,7 +267,7 @@ const features = [
                                 <span className="version-item__date">September 2025</span>
                             </div>
                             <ul className="version-item__changes">
-                                <li>Initial release - Welcome to REcipe! 🎉</li>
+                                <li>Initial release - Welcome to REcipe! (Initial release)</li>
                                 <li>AI-powered food recognition technology</li>
                                 <li>Smart expiry tracking with customizable notifications</li>
                                 <li>Personalized recipe suggestions based on your inventory</li>
