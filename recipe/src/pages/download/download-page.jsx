@@ -27,13 +27,6 @@ const features = [
     'Cross-Device Sync via Supabase'
 ];
 
-    const stats = [
-        { number: '10K+', label: 'Active Users', icon: <Users size={32} /> },
-        { number: '4.8', label: 'User Rating', icon: <Star size={32} /> },
-        { number: '50K+', label: 'Foods Tracked', icon: <Zap size={32} /> },
-        { number: '100%', label: 'Secure', icon: <Shield size={32} /> }
-    ];
-
     return (
         <div className="download-page">
             {/* Hero Section */}
@@ -47,6 +40,7 @@ const features = [
                                 <br />
                                 <span className="download-hero__title--highlight">Start Saving Food Today</span>
                             </h1>
+                            <p className="download-hero__subtitle">
                                 Compatible with Android 8.0+ • Free Forever
                             </p>
                         </div>
