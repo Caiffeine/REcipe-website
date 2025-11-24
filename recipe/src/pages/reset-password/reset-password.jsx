@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { Eye, EyeOff, AlertTriangle, CheckCircle, Check, Circle } from 'lucide-react';
+import { Eye, EyeOff, AlertTriangle, CheckCircle, Check, Circle, Lock } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
+import Button from '../../components/button/button';
+import Card from '../../components/card/Card';
 import './reset-password.css';
 
 const ResetPassword = () => {
@@ -113,10 +115,11 @@ const ResetPassword = () => {
   if (checkingToken) {
     return (
       <div className="reset-password-container">
-        <div className="reset-password-card loading-card">
+        <div className="reset-password-background"></div>
+        <Card className="reset-password-card loading-card">
           <div className="loading-spinner"></div>
           <p>Verifying reset link...</p>
-        </div>
+        </Card>
       </div>
     );
   }
@@ -124,17 +127,19 @@ const ResetPassword = () => {
   if (!tokenValid) {
     return (
       <div className="reset-password-container">
-        <div className="reset-password-card error-card">
+        <div className="reset-password-background"></div>
+        <Card className="reset-password-card error-card">
           <AlertTriangle className="error-icon" size={64} />
           <h2>Invalid Reset Link</h2>
           <p>{error}</p>
-          <button
-            className="home-button"
+          <Button
             onClick={() => navigate('/')}
+            variant="primary"
+            className="home-button"
           >
             Go to Home
-          </button>
-        </div>
+          </Button>
+        </Card>
       </div>
     );
   }
@@ -142,7 +147,8 @@ const ResetPassword = () => {
   if (success) {
     return (
       <div className="reset-password-container">
-        <div className="reset-password-card success-card">
+        <div className="reset-password-background"></div>
+        <Card className="reset-password-card success-card">
           <div className="success-icon-wrapper">
             <CheckCircle className="success-icon" size={48} />
           </div>
@@ -154,21 +160,26 @@ const ResetPassword = () => {
           <p className="countdown-text">
             Redirecting to home in {countdown} seconds...
           </p>
-          <button
-            className="home-button"
+          <Button
             onClick={() => navigate('/')}
+            variant="primary"
+            className="home-button"
           >
             Go to Home Now
-          </button>
-        </div>
+          </Button>
+        </Card>
       </div>
     );
   }
 
   return (
     <div className="reset-password-container">
-      <div className="reset-password-card">
+      <div className="reset-password-background"></div>
+      <Card className="reset-password-card" hover={true}>
         <div className="card-header">
+          <div className="header-icon">
+            <Lock size={32} />
+          </div>
           <h2>Reset Your Password</h2>
           <p>Enter your new password below</p>
         </div>
@@ -176,7 +187,8 @@ const ResetPassword = () => {
         <form onSubmit={handleSubmit} className="reset-form">
           {error && (
             <div className="error-message">
-              {error}
+              <AlertTriangle size={18} />
+              <span>{error}</span>
             </div>
           )}
 
@@ -192,6 +204,7 @@ const ResetPassword = () => {
                 required
                 disabled={loading}
                 autoComplete="new-password"
+                className="form-input"
               />
               <button
                 type="button"
@@ -216,6 +229,7 @@ const ResetPassword = () => {
                 required
                 disabled={loading}
                 autoComplete="new-password"
+                className="form-input"
               />
               <button
                 type="button"
@@ -250,15 +264,17 @@ const ResetPassword = () => {
             </ul>
           </div>
 
-          <button
+          <Button
             type="submit"
+            variant="primary"
+            size="large"
             className="submit-button"
             disabled={loading || !password || !confirmPassword}
           >
             {loading ? 'Resetting Password...' : 'Reset Password'}
-          </button>
+          </Button>
         </form>
-      </div>
+      </Card>
     </div>
   );
 };

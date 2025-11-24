@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Leaf, Users, Target, Award } from 'lucide-react';
+import Card from '../../components/card/Card';
 import './about-page.css';
 
 const AboutPage = () => {
@@ -90,15 +91,10 @@ const AboutPage = () => {
                         <div className="about-mission__text" data-aos="fade-right">
                             <h2 className="about-mission__title">Our Mission</h2>
                             <p className="about-mission__description">
-                                Food waste is a critical issue in the Philippines. According to the Department of Science
-                                and Technology - Food and Nutrition Research Institute, rice, vegetables, and meat are among
-                                the most frequently discarded items at the household level.
+                                Food waste is a global challenge that begins in our homes. In the Philippines alone, tons of edible food are discarded daily, contributing to environmental strain and economic loss.
                             </p>
                             <p className="about-mission__description">
-                                REcipe addresses this challenge by providing an AI-powered food management system that helps
-                                households track inventory, monitor expiration dates, and generate recipe suggestions based
-                                on available ingredients. Our goal is to reduce food waste while promoting sustainable
-                                consumption practices.
+                                REcipe was born from a vision to transform this narrative. By harnessing the power of artificial intelligence, we empower households to make smarter decisions, optimize their consumption, and rediscover the joy of cooking with what they already have. We believe that sustainable living should be effortless, intuitive, and rewarding.
                             </p>
                         </div>
                         <div className="about-mission__image" data-aos="fade-left">
@@ -117,46 +113,46 @@ const AboutPage = () => {
                     <div className="section-header" data-aos="fade-up">
                         <h2 className="section-title">Our Core Values</h2>
                         <p className="section-subtitle">
-                            The principles that guide our mission to reduce food waste
+                            The guiding principles behind our commitment to a zero-waste future
                         </p>
                     </div>
                     <div className="values-grid">
-                        <div className="value-card" data-aos="fade-up" data-aos-delay="0">
+                        <Card className="value-card" data-aos="fade-up" data-aos-delay="0" hover={true}>
                             <div className="value-card__icon">
                                 <Leaf size={32} />
                             </div>
-                            <h3 className="value-card__title">Sustainability</h3>
+                            <h3 className="value-card__title">Sustainability First</h3>
                             <p className="value-card__description">
-                                Committed to environmental responsibility and promoting sustainable food practices.
+                                Every feature we build is designed to reduce environmental impact and promote responsible consumption.
                             </p>
-                        </div>
-                        <div className="value-card" data-aos="fade-up" data-aos-delay="100">
+                        </Card>
+                        <Card className="value-card" data-aos="fade-up" data-aos-delay="100" hover={true}>
                             <div className="value-card__icon">
                                 <Users size={32} />
                             </div>
-                            <h3 className="value-card__title">Community</h3>
+                            <h3 className="value-card__title">Community Driven</h3>
                             <p className="value-card__description">
-                                Building a community of conscious consumers working together to reduce waste.
+                                We foster a collective movement of conscious consumers working together to make a tangible difference.
                             </p>
-                        </div>
-                        <div className="value-card" data-aos="fade-up" data-aos-delay="200">
+                        </Card>
+                        <Card className="value-card" data-aos="fade-up" data-aos-delay="200" hover={true}>
                             <div className="value-card__icon">
                                 <Target size={32} />
                             </div>
-                            <h3 className="value-card__title">Innovation</h3>
+                            <h3 className="value-card__title">Purposeful Innovation</h3>
                             <p className="value-card__description">
-                                Leveraging cutting-edge AI technology to solve real-world food waste challenges.
+                                We leverage cutting-edge technology not just for novelty, but to solve real-world problems effectively.
                             </p>
-                        </div>
-                        <div className="value-card" data-aos="fade-up" data-aos-delay="300">
+                        </Card>
+                        <Card className="value-card" data-aos="fade-up" data-aos-delay="300" hover={true}>
                             <div className="value-card__icon">
                                 <Award size={32} />
                             </div>
-                            <h3 className="value-card__title">Excellence</h3>
+                            <h3 className="value-card__title">Uncompromising Quality</h3>
                             <p className="value-card__description">
-                                Dedicated to delivering a high-quality, user-friendly experience for all users.
+                                We are dedicated to delivering a seamless, premium experience that our users can rely on daily.
                             </p>
-                        </div>
+                        </Card>
                     </div>
                 </div>
             </section>

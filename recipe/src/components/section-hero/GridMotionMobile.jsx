@@ -1,21 +1,38 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
+import { preloadImages } from '../../utils/imagePreloader';
 import './GridMotionMobile.css';
 
 const GridMotionMobile = ({ items = [], gradientColor = 'black' }) => {
     const gridRef = useRef(null);
     const rowRefs = useRef([]);
     const mouseXRef = useRef(window.innerWidth / 2);
+    const [loadedItems, setLoadedItems] = useState([]);
 
     const rows = 12; // Increased rows for better coverage
     const itemsPerRow = 6; // Keep 6 items per row for mobile
     const totalItems = rows * itemsPerRow;
 
-    // Repeat items to fill all slots
+    // Preload images on mount
+    useEffect(() => {
+        const loadImages = async () => {
+            if (items.length > 0) {
+                const imageUrls = items.filter(item => typeof item === 'string' && item.startsWith('http'));
+                const loaded = await preloadImages(imageUrls);
+                setLoadedItems(loaded);
+            }
+        };
+        
+        loadImages();
+    }, [items]);
+
+    // Repeat items to fill all slots, using only successfully loaded images
     const repeatedItems = [];
-    if (items.length > 0) {
+    const itemsToUse = loadedItems.length > 0 ? loadedItems : items;
+    
+    if (itemsToUse.length > 0) {
         for (let i = 0; i < totalItems; i++) {
-            repeatedItems.push(items[i % items.length]);
+            repeatedItems.push(itemsToUse[i % itemsToUse.length]);
         }
     }
     const combinedItems = repeatedItems.length > 0 ? repeatedItems : Array.from({ length: totalItems }, (_, index) => `Item ${index + 1}`);
@@ -77,7 +94,7 @@ const GridMotionMobile = ({ items = [], gradientColor = 'black' }) => {
                                 const content = combinedItems[rowIndex * itemsPerRow + itemIndex];
                                 return (
                                     <div key={itemIndex} className="row__item-mobile">
-                                        <div className="row__item-inner-mobile" style={{ backgroundColor: '#111' }}>
+                                        <div className="row__item-inner-mobile">
                                             {typeof content === 'string' && content.startsWith('http') ? (
                                                 <div
                                                     className="row__item-img-mobile"

@@ -18,16 +18,14 @@ const DownloadPage = () => {
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
 
-    const features = [
-        'AI-powered food recognition',
-        'Smart expiry tracking',
-        'Personalized recipe suggestions',
-        'Nutritional information',
-        'Inventory management',
-        'Push notifications for expiring items',
-        'Meal planning assistance',
-        'Interactive Pantry Dashboard'
-    ];
+const features = [
+    'AI-Powered Food Recognition',
+    'Universal Scanner (Barcode, QR, OCR)',
+    'SousChef AI Recipe Generator',
+    'Smart Expiry Alerts (7/3/1 Days)',
+    'User Pantry Management',
+    'Cross-Device Sync via Supabase'
+];
 
     const stats = [
         { number: '10K+', label: 'Active Users', icon: <Users size={32} /> },
@@ -81,34 +79,6 @@ const DownloadPage = () => {
                 </div>
             </section>
 
-            {/* Stats Section */}
-            <section className="section download-stats">
-                <div className="container">
-                    <div className="section-header" data-aos="fade-up">
-                        <h2 className="section-title" style={{ color: 'var(--color-primary)' }}>Trusted by Thousands</h2>
-                        <p className="section-subtitle" style={{ color: 'var(--color-text-dark)' }}>
-                            Join our growing community of food waste warriors
-                        </p>
-                    </div>
-                    <div className="stats-grid">
-                        {stats.map((stat, index) => (
-                            <div
-                                key={index}
-                                className="stat-item"
-                                data-aos="zoom-in"
-                                data-aos-delay={index * 100}
-                            >
-                                <div className="stat-item__icon" style={{ marginBottom: 'var(--spacing-sm)', display: 'flex', justifyContent: 'center', color: 'var(--color-primary)' }}>
-                                    {stat.icon}
-                                </div>
-                                <div className="stat-item__number">{stat.number}</div>
-                                <div className="stat-item__label">{stat.label}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-
             {/* Features Section */}
             <section className="section download-features">
                 <div className="container">
@@ -131,6 +101,31 @@ const DownloadPage = () => {
                     </div>
                 </div>
             </section>
+{/* Developer Insights Section */}
+<section className="section section-alt developer-insights">
+    <div className="container">
+        <div className="section-header" data-aos="fade-up">
+            <h2 className="section-title">Powered by Modern Tech</h2>
+            <p className="section-subtitle">
+                Built for performance, reliability, and scale.
+            </p>
+        </div>
+        <div className="features-list" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: 'var(--spacing-xl)', marginTop: 'var(--spacing-2xl)' }}>
+            <div className="feature-item" data-aos="fade-up">
+                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>React Native</h3>
+                <p>Native Android performance.</p>
+            </div>
+            <div className="feature-item" data-aos="fade-up" data-aos-delay="100">
+                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>Supabase</h3>
+                <p>Real-time database & secure auth.</p>
+            </div>
+            <div className="feature-item" data-aos="fade-up" data-aos-delay="200">
+                <h3 style={{ marginBottom: 'var(--spacing-sm)', color: 'var(--color-primary)' }}>Edamam & SousChef AI</h3>
+                <p>Enterprise-grade recipe intelligence.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
             {/* Instructions Section */}
             <section className="section section-alt download-instructions">

@@ -1,11 +1,12 @@
 // REcipe Web - Home Page
-import { Download } from 'lucide-react';
-import { useState, useEffect } from 'react';
+import { Download, Camera, Calendar, ChefHat, Heart, ArrowRight, CheckCircle } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
 import Button from '../../components/button/button';
+import Card from '../../components/card/Card';
 import GridMotion from '../../components/section-hero/GridMotion';
 import GridMotionMobile from '../../components/section-hero/GridMotionMobile';
 import logoImage from '../../assets/recipe-header-logo.png';
-import { FEATURES } from '../../utils/constants';
+import { FEATURES, APP_DESCRIPTION } from '../../utils/constants';
 import './home-page.css';
 
 const HomePage = () => {
@@ -21,6 +22,32 @@ const HomePage = () => {
 
         return () => window.removeEventListener('resize', checkMobile);
     }, []);
+
+    const heroBackgroundRef = useRef(null);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            if (heroBackgroundRef.current) {
+                const scrolled = window.scrollY;
+                heroBackgroundRef.current.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    // Map icon strings to components
+    const getIcon = (iconName) => {
+        const icons = {
+            Camera: <Camera size={32} />,
+            Calendar: <Calendar size={32} />,
+            ChefHat: <ChefHat size={32} />,
+            Heart: <Heart size={32} />
+        };
+        return icons[iconName] || <CheckCircle size={32} />;
+    };
+
     // Food image URLs for the grid motion background
     const foodItems = [
         'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=400&fit=crop', // Salad
@@ -57,11 +84,11 @@ const HomePage = () => {
         <div className="home-page">
             {/* Hero Section */}
             <section className="hero">
-                <div className="hero__background">
+                <div className="hero__background" ref={heroBackgroundRef}>
                     {isMobile ? (
-                        <GridMotionMobile items={foodItems} gradientColor="rgba(0, 0, 0, 0.4)" />
+                        <GridMotionMobile items={foodItems} gradientColor="rgba(255, 255, 255, 0.8)" />
                     ) : (
-                        <GridMotion items={foodItems} gradientColor="rgba(0, 0, 0, 0.4)" />
+                        <GridMotion items={foodItems} gradientColor="rgba(255, 255, 255, 0.8)" />
                     )}
                 </div>
                 <div className="container">
@@ -69,19 +96,36 @@ const HomePage = () => {
                         <div className="hero__logo-container" data-aos="zoom-in">
                             <img src={logoImage} alt="REcipe Logo" className="hero__logo" />
                         </div>
+                        {/* Text removed as per user request */}
                         <div className="hero__actions" data-aos="fade-up" data-aos-delay="200">
                             <Button
                                 to="/download"
                                 variant="primary"
                                 size="large"
                                 icon={<Download size={20} />}
+                                className="hero__btn"
                             >
                                 Download Now
                             </Button>
-                            <Button to="/about" variant="outline" size="large">
+                            <Button
+                                to="/about"
+                                variant="outline"
+                                size="large"
+                                className="hero__btn"
+                            >
                                 Learn More
                             </Button>
                         </div>
+                    </div>
+                </div>
+                <div className="hero__scroll-indicator" data-aos="fade-up" data-aos-delay="400">
+                    <div className="mouse">
+                        <div className="wheel"></div>
+                    </div>
+                    <div className="arrow-scroll">
+                        <span></span>
+                        <span></span>
+                        <span></span>
                     </div>
                 </div>
             </section>
@@ -90,25 +134,26 @@ const HomePage = () => {
             <section className="section features">
                 <div className="container">
                     <div className="section-header" data-aos="fade-up">
-                        <h2 className="section-title">Smart Features for Smarter Food Management</h2>
+                        <h2 className="section-title">Smart Features</h2>
                         <p className="section-subtitle">
                             Everything you need to reduce waste and make the most of your ingredients
                         </p>
                     </div>
                     <div className="features__grid">
                         {FEATURES.map((feature, index) => (
-                            <div
+                            <Card
                                 key={feature.id}
                                 className="feature-card"
                                 data-aos="fade-up"
                                 data-aos-delay={index * 100}
+                                hover={true}
                             >
-                                <div className="feature-card__icon">
-                                    <div className="feature-card__icon-bg" />
+                                <div className="feature-card__icon-wrapper">
+                                    {getIcon(feature.icon)}
                                 </div>
                                 <h3 className="feature-card__title">{feature.title}</h3>
                                 <p className="feature-card__description">{feature.description}</p>
-                            </div>
+                            </Card>
                         ))}
                     </div>
                 </div>
@@ -127,27 +172,27 @@ const HomePage = () => {
                         <div className="step" data-aos="fade-right">
                             <div className="step__number">1</div>
                             <div className="step__content">
-                                <h3 className="step__title">Scan Your Food</h3>
+                                <h3 className="step__title">Scan Everything</h3>
                                 <p className="step__description">
-                                    Use your camera to identify and add items to your inventory instantly.
+                                    Use AI to recognize fruits, scan barcodes for packages, or use OCR to read receipts instantly.
                                 </p>
                             </div>
                         </div>
                         <div className="step" data-aos="fade-right" data-aos-delay="100">
                             <div className="step__number">2</div>
                             <div className="step__content">
-                                <h3 className="step__title">Track Expiry Dates</h3>
+                                <h3 className="step__title">Automate Freshness</h3>
                                 <p className="step__description">
-                                    Receive timely notifications before your food expires.
+                                    Your digital pantry tracks every expiration date and notifies you before it's too late.
                                 </p>
                             </div>
                         </div>
                         <div className="step" data-aos="fade-right" data-aos-delay="200">
                             <div className="step__number">3</div>
                             <div className="step__content">
-                                <h3 className="step__title">Get Recipe Ideas</h3>
+                                <h3 className="step__title">Ask SousChef AI</h3>
                                 <p className="step__description">
-                                    Discover delicious recipes based on what you have available.
+                                    Generate custom recipes with SousChef AI or find instant matches for your ingredients.
                                 </p>
                             </div>
                         </div>
@@ -158,20 +203,22 @@ const HomePage = () => {
             {/* CTA Section */}
             <section className="section cta">
                 <div className="container">
-                    <div className="cta__content" data-aos="zoom-in">
-                        <h2 className="cta__title">Ready to Make a Difference?</h2>
-                        <p className="cta__description">
-                            Join thousands of Filipino households reducing food waste every day.
-                        </p>
-                        <Button
-                            to="/download"
-                            variant="secondary"
-                            size="large"
-                            icon={<Download size={20} />}
-                        >
-                            Download REcipe Today
-                        </Button>
-                    </div>
+                    <Card className="cta__card" glass={true} data-aos="zoom-in">
+                        <div className="cta__content">
+                            <h2 className="cta__title">Ready to Make a Difference?</h2>
+                            <p className="cta__description">
+                                Join thousands of Filipino households reducing food waste every day.
+                            </p>
+                            <Button
+                                to="/download"
+                                variant="primary"
+                                size="large"
+                                icon={<Download size={20} />}
+                            >
+                                Download REcipe Today
+                            </Button>
+                        </div>
+                    </Card>
                 </div>
             </section>
         </div>
@@ -179,3 +226,4 @@ const HomePage = () => {
 };
 
 export default HomePage;
+

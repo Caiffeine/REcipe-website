@@ -1,21 +1,23 @@
 // REcipe Web - 404 Not Found Page
 import { Home, ArrowLeft } from 'lucide-react';
 import Button from '../../components/button/button';
+import Card from '../../components/card/Card';
 import './not-found.css';
 
 const NotFound = () => {
     return (
         <div className="not-found">
+            <div className="not-found__background"></div>
             <div className="container">
-                <div className="not-found__content">
-                    <div className="not-found__404" data-aos="zoom-in">404</div>
-                    <h1 className="not-found__title" data-aos="fade-up" data-aos-delay="100">
+                <Card className="not-found__content" hover={true} data-aos="zoom-in">
+                    <div className="not-found__404">404</div>
+                    <h1 className="not-found__title">
                         Page Not Found
                     </h1>
-                    <p className="not-found__description" data-aos="fade-up" data-aos-delay="200">
+                    <p className="not-found__description">
                         Sorry, the page you're looking for doesn't exist or has been moved.
                     </p>
-                    <div className="not-found__actions" data-aos="fade-up" data-aos-delay="300">
+                    <div className="not-found__actions">
                         <Button
                             to="/"
                             variant="primary"
@@ -33,7 +35,7 @@ const NotFound = () => {
                             Go Back
                         </Button>
                     </div>
-                </div>
+                </Card>
             </div>
         </div>
     );

@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 import Button from '../../components/button/button';
+import Card from '../../components/card/Card';
 import { CONTACT_INFO } from '../../utils/constants';
 import './contact-page.css';
 
@@ -38,6 +39,7 @@ const ContactPage = () => {
         <div className="contact-page">
             {/* Hero Section */}
             <section className="contact-hero">
+                <div className="contact-hero__background"></div>
                 <div className="container">
                     <div className="contact-hero__content" data-aos="fade-up">
                         <h1 className="contact-hero__title">Get in Touch</h1>
@@ -60,7 +62,7 @@ const ContactPage = () => {
                             </p>
 
                             <div className="contact-info__items">
-                                <div className="contact-info__item">
+                                <Card className="contact-info__item" hover={true}>
                                     <div className="contact-info__icon">
                                         <Mail size={24} />
                                     </div>
@@ -70,9 +72,9 @@ const ContactPage = () => {
                                             {CONTACT_INFO.email}
                                         </a>
                                     </div>
-                                </div>
+                                </Card>
 
-                                <div className="contact-info__item">
+                                <Card className="contact-info__item" hover={true}>
                                     <div className="contact-info__icon">
                                         <Phone size={24} />
                                     </div>
@@ -82,9 +84,9 @@ const ContactPage = () => {
                                             {CONTACT_INFO.phone}
                                         </a>
                                     </div>
-                                </div>
+                                </Card>
 
-                                <div className="contact-info__item">
+                                <Card className="contact-info__item" hover={true}>
                                     <div className="contact-info__icon">
                                         <MapPin size={24} />
                                     </div>
@@ -92,81 +94,107 @@ const ContactPage = () => {
                                         <h3 className="contact-info__label">Location</h3>
                                         <p className="contact-info__text">{CONTACT_INFO.address}</p>
                                     </div>
-                                </div>
+                                </Card>
                             </div>
                         </div>
 
                         {/* Contact Form */}
                         <div className="contact-form-wrapper" data-aos="fade-left">
-                            <form className="contact-form" onSubmit={handleSubmit}>
-                                <h2 className="contact-form__title">Send us a Message</h2>
+                            <Card className="contact-form-card">
+                                <form className="contact-form" onSubmit={handleSubmit}>
+                                    <h2 className="contact-form__title">Send us a Message</h2>
 
-                                <div className="form-group">
-                                    <label htmlFor="name" className="form-label">Name</label>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        name="name"
-                                        className="form-input"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="name" className="form-label">Name</label>
+                                        <input
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            className="form-input"
+                                            value={formData.name}
+                                            onChange={handleChange}
+                                            required
+                                            placeholder="Your Name"
+                                        />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="email" className="form-label">Email</label>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        name="email"
-                                        className="form-input"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="email" className="form-label">Email</label>
+                                        <input
+                                            type="email"
+                                            id="email"
+                                            name="email"
+                                            className="form-input"
+                                            value={formData.email}
+                                            onChange={handleChange}
+                                            required
+                                            placeholder="your.email@example.com"
+                                        />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="subject" className="form-label">Subject</label>
-                                    <input
-                                        type="text"
-                                        id="subject"
-                                        name="subject"
-                                        className="form-input"
-                                        value={formData.subject}
-                                        onChange={handleChange}
-                                        required
-                                    />
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="subject" className="form-label">Subject</label>
+                                        <input
+                                            type="text"
+                                            id="subject"
+                                            name="subject"
+                                            className="form-input"
+                                            value={formData.subject}
+                                            onChange={handleChange}
+                                            required
+                                            placeholder="How can we help?"
+                                        />
+                                    </div>
 
-                                <div className="form-group">
-                                    <label htmlFor="message" className="form-label">Message</label>
-                                    <textarea
-                                        id="message"
-                                        name="message"
-                                        className="form-textarea"
-                                        rows="6"
-                                        value={formData.message}
-                                        onChange={handleChange}
-                                        required
-                                    ></textarea>
-                                </div>
+                                    <div className="form-group">
+                                        <label htmlFor="message" className="form-label">Message</label>
+                                        <textarea
+                                            id="message"
+                                            name="message"
+                                            className="form-textarea"
+                                            rows="6"
+                                            value={formData.message}
+                                            onChange={handleChange}
+                                            required
+                                            placeholder="Tell us more..."
+                                        ></textarea>
+                                    </div>
 
-                                <Button
-                                    type="submit"
-                                    variant="primary"
-                                    size="large"
-                                    icon={<Send size={20} />}
-                                    className="contact-form__submit"
-                                >
-                                    Send Message
-                                </Button>
-                            </form>
+                                    <Button
+                                        type="submit"
+                                        variant="primary"
+                                        size="large"
+                                        icon={<Send size={20} />}
+                                        className="contact-form__submit"
+                                    >
+                                        Send Message
+                                    </Button>
+                                </form>
+                            </Card>
                         </div>
                     </div>
                 </div>
             </section>
+            {/* Community Feedback Section */}
+<section className="section" style={{ backgroundColor: 'var(--color-background-alt)', textAlign: 'center' }}>
+    <div className="container">
+        <div className="section-header" data-aos="fade-up">
+            <h2 className="section-title">Have you tried the app?</h2>
+            <p className="section-subtitle">
+                We value your input! Let us know what you think about the AI features and scanning accuracy.
+            </p>
+        </div>
+        <Button
+            variant="primary"
+            size="large"
+            onClick={() => window.open('https://forms.google.com/your-form-id', '_blank')}
+            data-aos="fade-up"
+            data-aos-delay="100"
+        >
+            Leave a Review
+        </Button>
+    </div>
+</section>
         </div>
     );
 };

@@ -23,31 +23,31 @@ export const CONTACT_INFO = {
 };
 
 export const APP_DESCRIPTION =
-    'An AI-powered food management system designed to help Filipino households reduce food waste through smart inventory tracking, expiry monitoring, and intelligent recipe generation.';
+    'AI-powered inventory tracking and recipe discovery.';
 
 export const FEATURES = [
     {
         id: 1,
-        title: 'Food Recognition',
-        description: 'Automatically identify and categorize food items using advanced AI technology.',
+        title: 'Universal Smart Scanner',
+        description: 'Instantly log food using our 4-way scanner: AI Food Recognition, Barcode Scanning, QR Code Reader, and OCR Text Scanning for receipts.',
         icon: 'Camera'
     },
     {
         id: 2,
-        title: 'Expiry Tracking',
-        description: 'Monitor expiration dates and receive timely alerts to prevent food waste.',
-        icon: 'Calendar'
-    },
-    {
-        id: 3,
-        title: 'Recipe Suggestions',
-        description: 'Get personalized recipe recommendations based on available ingredients.',
+        title: 'SousChef AI',
+        description: 'Meet your new cooking assistant. SousChef AI generates unique, step-by-step recipes based strictly on the ingredients you have at home.',
         icon: 'ChefHat'
     },
     {
+        id: 3,
+        title: 'Smart Expiry Tracker',
+        description: 'Stop guessing. We automatically track shelf life and send alerts 7 days, 3 days, and 1 day before your food spoils.',
+        icon: 'Calendar'
+    },
+    {
         id: 4,
-        title: 'Nutrition Insights',
-        description: 'Access detailed nutritional information for informed dietary choices.',
+        title: 'Pantry-First Cooking',
+        description: 'Save money by prioritizing recipes that use what you already own. Matches your inventory to over 2 million Edamam recipes.',
         icon: 'Heart'
     }
 ];
