@@ -47,24 +47,6 @@ const features = [
                                 <br />
                                 <span className="download-hero__title--highlight">Start Saving Food Today</span>
                             </h1>
-                            <p className="download-hero__description">
-                                Get the REcipe app exclusively from our website. Available for Android devices.
-                                Join thousands of Filipinos reducing food waste every day!
-                            </p>
-
-                            <div className="download-buttons">
-                                <Button
-                                    variant="primary"
-                                    size="large"
-                                    icon={<Download size={24} />}
-                                    className="download-btn"
-                                >
-                                    Download for Android
-                                </Button>
-                            </div>
-
-                            <p className="download-note">
-                                <Smartphone size={18} />
                                 Compatible with Android 8.0+ • Free Forever
                             </p>
                         </div>
