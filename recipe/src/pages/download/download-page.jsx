@@ -45,7 +45,7 @@ const DownloadPage = () => {
                             </p>
                             <div className="download-hero__actions">
                                 <Button
-                                    href="https://expo.dev/artifacts/eas/4ka1fuuS5cNfDxGmNzuMse.apk"
+                                    href="https://expo.dev/artifacts/eas/bKvoH69AyH86YhgkmYgcKb.apk"
                                     variant="primary"
                                     size="large"
                                     icon={<Download size={18} />}
